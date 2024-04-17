@@ -7,7 +7,135 @@ description: Polypad Changelog
 
 # Polypad Changelog
 
-## v4.7.0 (28 August 2023)
+## v5.0.4 (4 April 2024)
+
+### New Features
+* Snap Cubes.
+* Interpolate variables in text boxes and polygon labels using the ${} syntax.
+* Increment buttons for number cards.
+* Support coordinate axes in Categorizer tiles.
+
+### Bug Fixes
+* Fix fatel bug when the colour picker is hidden.
+* Fix incorrect change event when the drawing a single dot with the pen tool.
+* Fix `resetState` option in the API.
+* Fix light-mode styling in action bar popups.
+* Hide tutorial links in the actionbar.
+* Don't expand the toolbar unless the pen tool is selected.
+* Don't resize the variable slide handle when zooming in/out.
+
+
+## v5.0.1 (27 March 2024)
+
+### Bug Fixes
+* Fix fatal bug when dynamically loading new content into an existing canvas.
+* Fix bug with thumbnail generation.
+
+
+## v5.0.0 (24 March 2024)
+This is a significant update. In addition to the breaking changes below, please note that static assets are now hosted on amplify.com rather than mathigon.org.
+
+### Breaking Changes
+* The `customSidebar` property has been removed.
+* Don't scale handles and selection outlines when zooming.
+* Don't show outlines for tiles in a group.
+
+### New Features
+* Ability to edit the value of tiles on the balance scale directly.
+* Authoring mode toggle for a large UI, and new drawing tool options (pen and eraser only, or coloured pencils)
+  Advanced validation options for drop zones (match, cover and compare).
+* Allow the song tile to trigger action buttons.
+* Sonification for dice and spinners.
+* Authoring option to make text-boxes non-editable.
+* New button to graph equations.
+* Split and merge number frames.
+* Custom major gridlines for ten frames.
+* Input field for arbitrary-length number bars.
+* Set the initial viewport in authoring mode.
+* Reset polypad button.
+* Translations into many additional languages.
+
+### Bug Fixes
+* TODO
+
+
+## v4.7.8 (27 November 2023)
+
+### New Features
+* Authoring mode toggle to prevent adding and removing vertices of custom polygons.
+* New "evaluate" button for equations, that replaces the previous toggle. New UI for how evaluated expressions are displayed, as a full equation. Option to change the output type to decimal, fraction or mixed number.
+* New "navigate" action for buttons that zooms/pans to a specific area of the canvas.
+* New "single use" toggle for action buttons.
+* Support recolouring of individual bars in single-series bar charts.
+
+### Bug Fixes
+* Several text box improvements, including better browser compatibility and requiring just a single click to focus once selected.
+* Fix undo/redo and pinch/pan buttons not always showing up in authoring mode.
+* Support keyboard shortcuts when SHIFT or CAPS LOCK is pressed.
+* Tweaks to the "toggle" action, to hide/show each tile individually.
+* Various minor bug fixes.
+
+
+## v4.7.7 (8 November 2023)
+
+### Bug Fixes
+* Return 0s from function machines as number cards rather than equations.
+* Don't remove <br> elements when reformatting text in textboxes.
+* Fix issues with number frames on the balance scale.
+
+
+## v4.7.6 (28 October 2023)
+
+### Bug Fixes
+* Ensure that decimal number cards produced by function machines can be converted to fractions.
+* Fix issues where function machines incorrectly rendered mixed numbers.
+* Fix issues when moving tiles while a function machine is processing.
+* Allow audio playing for groups/selections of tiles even if they include some non-playable tiles.
+* Fix bugs when layering song tiles and categorizer tiles.
+
+
+## v4.7.5 (25 October 2023)
+
+### New Features
+* Function machines that can take many different tiles as input and perform a computation. You can invert linear functions, tabulate the items that pass through them, change the function expression, or hide it entirely.
+* Number cards now support fractions and mixed numbers as a display style.
+
+
+## v4.7.4 (22 October 2023)
+
+### New Features
+* An "Action button" that can be created in authoring mode, and used to trigger actions like rolling dice, playing music or hiding/showing tiles.
+* Use the "text label" of polygon tiles as numeric value where possible (e.g. on balance scales).
+* Option to play musical scales in reverse.
+
+### Bug Fixes
+* Update drop zones to work with grouped tiles.
+* Fix cutting and folding nets with Rectangle tiles.
+* Return undefined as a CL export for min/max/range when empty.
+* Fix music playback for fraction circles and continuous area.
+* Fix positioning of balance scales on fixed-size canvases.
+* Fix percussion icons in song tile.
+
+
+## v4.7.2 (28 September 2023)
+
+### Breaking Changes
+* The `.pinActionbar()` method has been removed. Instead, you can set the pin status of the actionbar in the Polypad options (`always`, `never` or `custom` which retains a toggle for users).
+
+### New Features
+* Updated action bar layout with a single dropdown and multiple accordion sections, as well as improvements when only few actions are selected in authoring mode.
+* Updated instrument samples.
+* New "arrow" tile.
+* Added translations for DE, JA, PL, SV, TH, TR, VI
+
+### Bug Fixes
+* Fix cutting flipped tiles and rectangles. Fix folding rectangles.
+* Improved polygon label alignment.
+* Fix selection bug after resizing balance scale.
+* Fix playing card labels.
+
+
+## v4.7.1 (28 August 2023)
 
 ### New Features
 * Set `exportToCL: true` to allow exporting of drop zone values. This happens using a new dropdown in the tile action bar to define exports using a list of different functions, and the new `Polypad.getExports()` and `instance.getExports()` methods and the new `instance.on('export')` event.
@@ -15,6 +143,7 @@ description: Polypad Changelog
 * Border radius for rectangle tiles (authoring mode).
 * Input fields for rectangle width/height and circle radius (authoring mode).
 * New instruments and sound samples. The "Song" tile is now called a "Track".
+* Adaptive cursor icons for pen tools, based on thickness and colour.
 
 ### Bug Fixes
 * Fix an issue that caused "cables" between different tiles to disappear when loading a canvas.

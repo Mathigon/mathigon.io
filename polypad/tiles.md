@@ -2,6 +2,7 @@
 layout: page
 nav_order: 1
 parent: Polypad API Docs
+description: Polypad Tiles
 ---
 
 # Polypad Tile Types
@@ -31,6 +32,14 @@ parent: Polypad API Docs
 * `name: 'balance'`
 * `level: number`
 * `size: number`
+
+### Function Machine Tile
+
+* `name: 'function-machine'`
+* `expr: string` – Max length: 50.
+* `height: number`
+* `hideExpression: boolean`
+* `invert: boolean`
 
 ### Logarithm Bar
 
@@ -161,6 +170,14 @@ parent: Polypad API Docs
 * `a: number` – The two side lengths in the construction Tile(a,b)
 * `b: number`
 
+### Arrow Tile
+
+* `name: 'arrow'`
+* `width: number`
+* `minLength: number`
+* `maxLength: number`
+* `round: number`
+
 ### Circle Tile
 
 * `name: 'circle'`
@@ -174,6 +191,7 @@ parent: Polypad API Docs
 * `name: 'custom-polygon'`
 * `shape: string` – Max length: 10000.
 * `scale: number`
+* `vertexCountLocked: boolean`
 * `textLabel: string` – Max length: 25.
 * `textLabelFontSize: number`
 * `textLabelRotate: boolean`
@@ -207,6 +225,9 @@ parent: Polypad API Docs
 
 * `name: 'polyomino'`
 * `index: number` – An integer from 0 to 11 for pentominoes, and from 12 to 16 for tetroninoes.
+* `textLabel: string` – Max length: 25.
+* `textLabelFontSize: number`
+* `textLabelRotate: boolean`
 
 ### Polygon Tile
 
@@ -314,6 +335,7 @@ parent: Polypad API Docs
 
 * `name: 'number-card'`
 * `value: number`
+* `valueStr: string` – Max length: 25.
 
 ### Number Cube
 
@@ -373,11 +395,19 @@ parent: Polypad API Docs
 * `name: 'prime-disk'`
 * `value: number`
 
+### Snap Cube Tile
+
+* `name: 'snap-cube'`
+* `value: number`
+* `colors: string` – Max length: 1000.
+
 ### Ten Frame Tile
 
 * `name: 'ten-frame'`
 * `cols: number`
 * `rows: number`
+* `rowMajor: number`
+* `colMajor: number`
 
 ### Ten Frame Counter
 
@@ -385,6 +415,20 @@ parent: Polypad API Docs
 * `value: number`
 
 ## Others
+
+### Action Card
+
+* `name: 'action-card'`
+* `actionId: string` – Max length: 50.
+* `duration: number`
+* `userLabel: string` – Max length: 50.
+* `width: number`
+* `singleUse: boolean`
+* `alternateZoom: boolean`
+* `useIcon: boolean`
+* `textLabel: string` – Max length: 25.
+* `textLabelFontSize: number`
+* `textLabelRotate: boolean`
 
 ### Categorizer Tile
 
@@ -395,6 +439,16 @@ parent: Polypad API Docs
 * `allowed: string` – Max length: 100.
 * `max: number`
 * `padding: number`
+* `tolerance: number`
+* `validation: 'compare' | 'cover' | 'match' | 'none'`
+* `showMark: boolean`
+* `storedSolution: string` – Max length: 10000.
+* `correct: boolean`
+* `compareType: string` – Max length: 100.
+* `compareOperator: '<' | '<=' | '=' | '>' | '>='`
+* `compareValue: number`
+* `useTranslations: boolean`
+* `autoCheck: boolean`
 
 ### Equation Tile
 
@@ -439,6 +493,12 @@ parent: Polypad API Docs
 * `fontSize: number`
 * `width: number`
 
+### Viewport Tile
+
+* `name: 'initial-viewport'`
+* `width: number`
+* `height: number`
+
 ## Probability
 
 ### Playing Card
@@ -456,6 +516,7 @@ parent: Polypad API Docs
 * `name: 'dice'`
 * `value: number`
 * `faces: string` – Pattern: `/^[0-9,]+$/`.
+* `playback: 'beats' | 'duration' | 'pitch' | 'subdivisions'`
 
 ### Domino Tile
 
@@ -468,6 +529,7 @@ parent: Polypad API Docs
 * `name: 'polyhedral-dice'`
 * `value: number`
 * `faceCount: number`
+* `playback: 'beats' | 'duration' | 'pitch' | 'subdivisions'`
 
 ### Random Number
 
@@ -483,6 +545,7 @@ parent: Polypad API Docs
 * `sectorCount: number`
 * `angle: number`
 * `colors: string` – Max length: 200.
+* `playback: 'beats' | 'duration' | 'pitch' | 'subdivisions'`
 
 ### Custom Spinner
 
@@ -490,6 +553,7 @@ parent: Polypad API Docs
 * `sectorSizes: string` – Pattern: `/^[0-9,]+$/`. Max length: 100.
 * `angle: number`
 * `colors: string` – Max length: 200.
+* `playback: 'beats' | 'duration' | 'pitch' | 'subdivisions'`
 
 ## Statistics
 
@@ -522,5 +586,4 @@ parent: Polypad API Docs
 
 * `name: 'table'`
 * `data: string` – Max length: 10000.
-* `aggregation: 'cumulative' | 'replace' | 'timeseries'`
-* `links: string` – Max length: 2000.
+* `aggregation: 'cumulative' | 'function' | 'replace' | 'timeseries'`

@@ -12,16 +12,16 @@ description: Polypad API Docs
 Our JavaScript API allows you to add interactive Polypad canvases to any website. You simply need to include our JS source file, create a parent element for Polypad, and then call `Polypad.create()`:
 
 ```html
-<script src="https://static.mathigon.org/api/polypad-en-v4.7.0.js"></script>
+<script src="https://static.mathigon.org/api/polypad-en-v5.0.5.js"></script>
 <div id="polypad" style="width: 800px; height: 500px;"></div>
-<script>Polypad.create(document.querySelector('#polypad'), {apiKey: 'test'})</script>
+<script>Polypad.create(document.querySelector('#polypad'))</script>
 ```
 
-Polypad requires [Custom Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) and the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API). If you want to use browsers that don't support these APIs, you have to include a polyfill, e.g. [mathigon.org/polyfill.js](https://mathigon.org/polyfill.js).
+Polypad requires [Custom Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements) and the [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API). If you want to use browsers that don't support these APIs, you have to include a polyfill.
 
 Our goal is to support the latest version of Chrome, Firefox, Opera and Edge on all mobile and desktop devices.
 
-Note: the `polypad-en-v4.x.x.js` script needs to be included in the `<body>`, not the `<head>` of your HTML document.
+Note: the `polypad.js` script needs to be included in the `<body>`, not the `<head>` of your HTML document.
 
 
 ## JSON Schema
@@ -73,6 +73,7 @@ interface PolypadOptions {
   noCopyPaste?: boolean;
   noUndoRedo?: boolean;
   noPinchPan?: boolean;
+  largeUI?: boolean;
   noDeleting?: boolean;
   noAudio?: boolean;        // Disable sound effects
   noMusic?: boolean;        // Disable sonification tools
@@ -112,9 +113,6 @@ interface Polypad {
     canvasMargin?: number;      // The margin around fixed size canvases (default 40px)
 
     initial?: PolypadData;      // Initial data to show
-
-    // Whether to show a second sidebar tab, or a custom tiles sidebar panel
-    customSidebar?: {title: string, tiles: TileData[]};
 
     // Override the default theme colours 'red', 'blue', 'green', ...
     themeColours?: Record<string, string>;
@@ -198,13 +196,9 @@ interface PolypadInstance {
   // soon as the target is interacted with.
   showGesture: (selector: string, slide?: {x: number, y: number}) => void;
 
-  // Pin or unpin the actionbar programatically. Note that the actionbar is always pinned for
-  // screen widths smaller than 600px.
-  pinActionbar: (pin: boolean) => void;
-  
   // Enable keyboard and accessibility shortcuts. See below for details
   bindKeyboardEvents: (keys?: KeyboardShortcuts) => void;
-  
+
   // Remove and clean up this Polypad instance. This action is irreversible, and any further
   // interaction with the instance class may throw undefined Errors.
   destroy(): void;
